@@ -1,3 +1,3 @@
-//= lib/jquery.js
-//= lib/slick.min.js
+//= models.js
+//= view.js
 //= common.js

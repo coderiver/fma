@@ -19,7 +19,29 @@ div, input, textarea, select, button, h1, h2, h3, h4, h5, h6, a, span, a:focus {
 ul, ol { list-style-type: none; }
 table { border-spacing: 0; border-collapse: collapse; width: 100%; }
 
-body { font-family: Arial, sans-serif; font-size: 12px; line-height: 1.4; }
+@font-face { font-family: NeutrafaceCondensed-Titling; src: url("fonts/NeutrafaceCondensed-Titling.eot"); src: url("fonts/NeutrafaceCondensed-Titling.eot?#iefix") format("embedded-opentype"), url("fonts/NeutrafaceCondensed-Titling.woff2") format("woff2"), url("fonts/NeutrafaceCondensed-Titling.woff") format("woff"), url("fonts/NeutrafaceCondensed-Titling.ttf") format("truetype"); font-weight: normal; font-style: normal; }
+@font-face { font-family: NeutrafaceDisplayTitling; src: url("fonts/NeutrafaceDisplayTitling.eot"); src: url("fonts/NeutrafaceDisplayTitling.eot?#iefix") format("embedded-opentype"), url("fonts/NeutrafaceDisplayTitling.woff2") format("woff2"), url("fonts/NeutrafaceDisplayTitling.woff") format("woff"), url("fonts/NeutrafaceDisplayTitling.ttf") format("truetype"); font-weight: normal; font-style: normal; }
+@font-face { font-family: NeutrafaceDisplayBold; src: url("fonts/NeutrafaceDisplayBold.eot"); src: url("fonts/NeutrafaceDisplayBold.eot?#iefix") format("embedded-opentype"), url("fonts/NeutrafaceDisplayBold.woff2") format("woff2"), url("fonts/NeutrafaceDisplayBold.woff") format("woff"), url("fonts/NeutrafaceDisplayBold.ttf") format("truetype"); font-weight: normal; font-style: normal; }
+body { font-family: "NeutrafaceDisplayBold"; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-transform: uppercase; font-size: 13px; line-height: 20px; color: #fff; }
+
+.out { position: relative; overflow: hidden; height: 100%; }
+.out:before { content: ""; position: absolute; left: 50%; margin-left: -300px; width: 600px; height: 100%; background: url(../img/bg.jpg); background-repeat: no-repeat; background-size: cover; background-position: 50% 50%; }
+
+.header { position: absolute; top: 0; width: 600px; height: 110px; left: 50%; margin-left: -300px; background: url(../img/header.jpg) no-repeat; z-index: 1; }
+.header .header__in { padding: 0 15px; }
+
+.h1 { margin-bottom: 25px; font-size: 20px; font-family: "NeutrafaceCondensed-Titling"; font-weight: normal; font-style: normal; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+.main { position: relative; padding: 80px 15px 15px; text-align: center; z-index: 2; }
+
+.steps { margin-bottom: 5px; }
+
+@-webkit-keyframes loader { from { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+  to { -webkit-transform: rotate(360deg); transform: rotate(360deg); } }
+
+@keyframes loader { from { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+  to { -webkit-transform: rotate(360deg); transform: rotate(360deg); } }
+.loader { width: 24px; height: 24px; border-radius: 50%; background: url(../img/loader.svg); background-repeat: no-repeat; background-size: cover; background-position: 50% 50%; -webkit-animation: loader 600ms infinite linear; animation: loader 600ms infinite linear; }
 
 @font-face { font-family: "svgfont"; src: url("fonts/svgfont.eot"); src: url("fonts/svgfont.eot?#iefix") format("eot"), url("fonts/svgfont.woff") format("woff"), url("fonts/svgfont.woff2") format("woff2"), url("fonts/svgfont.ttf") format("truetype"); font-weight: normal; font-style: normal; }
 .icon, [class^="icon-"], [class*=" icon-"] { font-family: "svgfont"; font-style: normal; font-weight: normal; text-rendering: auto; speak: none; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
@@ -36,9 +58,6 @@ body { font-family: Arial, sans-serif; font-size: 12px; line-height: 1.4; }
 .l .l-col2 { float: right; width: 70%; }
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px){
  *{ -webkit-text-size-adjust: none; } }
-@media only screen and (max-width: 1024px){
- div{ display: block; }
- p{ background: red; } }
 
 
 
