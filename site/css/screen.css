@@ -59,6 +59,7 @@ body { font-family: "NeutrafaceDisplayBold"; -webkit-font-smoothing: antialiased
 @keyframes loader { from { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
   to { -webkit-transform: rotate(360deg); transform: rotate(360deg); } }
 .loader { width: 24px; height: 24px; border-radius: 50%; background: url(../img/loader.svg); background-repeat: no-repeat; background-size: cover; background-position: 50% 50%; -webkit-animation: loader 700ms infinite linear; animation: loader 700ms infinite linear; opacity: 0; }
+.loader.loader_big { width: 48px; height: 48px; }
 .loader.is-visible { opacity: 1; }
 
 .song { display: block; border-bottom: 1px solid #bbc6d8; }
@@ -131,6 +132,11 @@ body { font-family: "NeutrafaceDisplayBold"; -webkit-font-smoothing: antialiased
 .lefteye, .righteye { position: absolute; width: 15px; height: 15px; border-radius: 50%; background: rgba(255, 255, 255, 0.75); }
 
 .mouth { position: absolute; width: 50px; height: 10px; border-radius: 5px; background: rgba(255, 255, 255, 0.75); }
+
+.loading { position: relative; }
+.loading .loading__in { width: 250px; height: 175px; margin: 0 auto 30px; background: url(../img/loading.png) 0 20px no-repeat; background-size: 100% auto; }
+.loading .loading__in .loader { position: absolute; top: 50px; left: 50%; margin-left: -24px; }
+.loading .loading__text { max-width: 210px; margin: 0 auto; text-align: center; text-transform: uppercase; }
 
 @font-face { font-family: "svgfont"; src: url("fonts/svgfont.eot"); src: url("fonts/svgfont.eot?#iefix") format("eot"), url("fonts/svgfont.woff") format("woff"), url("fonts/svgfont.woff2") format("woff2"), url("fonts/svgfont.ttf") format("truetype"); font-weight: normal; font-style: normal; }
 .checkbox input + span:after, .icon, [class^="icon-"], [class*=" icon-"] { font-family: "svgfont"; font-style: normal; font-weight: normal; text-rendering: auto; speak: none; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
