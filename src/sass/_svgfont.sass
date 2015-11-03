@@ -5,8 +5,12 @@
 	font-weight: normal
 	font-style: normal
 
-$icon-sepa: "\EA01"
-$icon-skrill: "\EA02"
+$icon-play: "\EA01"
+$icon-sepa: "\EA02"
+$icon-skrill: "\EA03"
+$icon-pause: "\EA04"
+$icon-arrow: "\EA05"
+$icon-checkbox: "\EA06"
 
 
 %icon
@@ -23,7 +27,15 @@ $icon-skrill: "\EA02"
 	@extend %icon
 	display: inline-block
 
+.icon-play:before
+	content: $icon-play
 .icon-sepa:before
 	content: $icon-sepa
 .icon-skrill:before
 	content: $icon-skrill
+.icon-pause:before
+	content: $icon-pause
+.icon-arrow:before
+	content: $icon-arrow
+.icon-checkbox:before
+	content: $icon-checkbox
