@@ -194,6 +194,15 @@ body { font-family: "NeutrafaceDisplayBold"; -webkit-font-smoothing: antialiased
 .terms .terms__text { text-transform: none; text-align: left; }
 .terms .terms__text p { margin-bottom: 25px; }
 
+.overlay { position: fixed; top: 0; bottom: 0; right: 0; left: 0; overflow-y: auto; text-align: center; font-size: 0; background: rgba(36, 30, 80, 0.8); z-index: 999; }
+.overlay:before { content: ""; display: inline-block; vertical-align: middle; width: 0; height: 100%; }
+
+.modal { position: relative; display: inline-block; vertical-align: middle; width: 240px; background: #fff; padding: 20px; color: #241e50; }
+.modal .modal__close { position: absolute; top: 10px; right: 10px; background: none; color: #241e50; font-size: 12px; }
+.modal .modal__in { font-size: 13px; }
+.modal .modal__img { padding-top: 18px; }
+.modal .modal__img img { display: block; width: 100%; }
+
 @font-face { font-family: "svgfont"; src: url("fonts/svgfont.eot"); src: url("fonts/svgfont.eot?#iefix") format("eot"), url("fonts/svgfont.woff") format("woff"), url("fonts/svgfont.woff2") format("woff2"), url("fonts/svgfont.ttf") format("truetype"); font-weight: normal; font-style: normal; }
 .checkbox input + span:after, .icon, [class^="icon-"], [class*=" icon-"] { font-family: "svgfont"; font-style: normal; font-weight: normal; text-rendering: auto; speak: none; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
@@ -201,9 +210,7 @@ body { font-family: "NeutrafaceDisplayBold"; -webkit-font-smoothing: antialiased
 
 .icon-play:before { content: ""; }
 
-.icon-sepa:before { content: ""; }
-
-.icon-skrill:before { content: ""; }
+.icon-close:before { content: ""; }
 
 .icon-pause:before { content: ""; }
 

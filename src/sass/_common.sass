@@ -571,7 +571,41 @@ body
 		text-transform: none
 		text-align: left
 		p
-			margin-bottom: 25px 				  	
+			margin-bottom: 25px
+			
+// modal
+.overlay
+	position: fixed
+	top: 0
+	bottom: 0
+	right: 0
+	left: 0
+	overflow-y: auto
+	+vertical
+	background: rgba($violet, 0.8) 
+	z-index: 999
+.modal
+	position: relative
+	display: inline-block
+	vertical-align: middle
+	width: 240px
+	background: #fff
+	padding: 20px
+	color: $violet 
+	.modal__close
+		position: absolute
+		top: 10px
+		right: 10px
+		background: none
+		color: $violet
+		font-size: 12px
+	.modal__in
+		font-size: 13px 	  
+	.modal__img
+		padding-top: 18px
+		img
+			display: block
+			width: 100% 				 				  	
 
 
 
