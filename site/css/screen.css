@@ -191,6 +191,9 @@ body { font-family: "NeutrafaceDisplayBold"; -webkit-font-smoothing: antialiased
 .input:-ms-input-placeholder { font-size: 13px; font-family: "NeutrafaceDisplayBold"; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; color: #ccc; text-transform: uppercase; }
 .input::placeholder { font-size: 13px; font-family: "NeutrafaceDisplayBold"; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; color: #ccc; text-transform: uppercase; }
 
+.terms .terms__text { text-transform: none; text-align: left; }
+.terms .terms__text p { margin-bottom: 25px; }
+
 @font-face { font-family: "svgfont"; src: url("fonts/svgfont.eot"); src: url("fonts/svgfont.eot?#iefix") format("eot"), url("fonts/svgfont.woff") format("woff"), url("fonts/svgfont.woff2") format("woff2"), url("fonts/svgfont.ttf") format("truetype"); font-weight: normal; font-style: normal; }
 .checkbox input + span:after, .icon, [class^="icon-"], [class*=" icon-"] { font-family: "svgfont"; font-style: normal; font-weight: normal; text-rendering: auto; speak: none; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
