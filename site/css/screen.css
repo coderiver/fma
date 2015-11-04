@@ -153,8 +153,10 @@ body { font-family: "NeutrafaceDisplayBold"; -webkit-font-smoothing: antialiased
 
 .slider { position: relative; margin-bottom: 50px; }
 .slider .slider__item img { display: block; width: 100%; height: auto; }
+.slider .slider__item .video { margin-bottom: 0; }
 
-.video { position: relative; }
+.video { position: relative; margin-bottom: 55px; }
+.video img { display: block; width: 100%; }
 .video .video__link { position: absolute; bottom: 0; left: 0; right: 0; padding: 15px 0 10px; background-color: rgba(255, 255, 255, 0); background-image: linear-gradient(rgba(255, 255, 255, 0), white); text-align: center; z-index: 2; }
 .video .video__link a { text-transform: uppercase; font-size: 12px; color: #241e50; font-family: "NeutrafaceDisplayTitling"; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-decoration: none; }
 .video .video__link a .icon-play-big { vertical-align: middle; }
@@ -166,6 +168,7 @@ body { font-family: "NeutrafaceDisplayBold"; -webkit-font-smoothing: antialiased
 
 .reselect { margin-bottom: 45px; }
 
+.store { max-width: 230px; margin: 0 auto; }
 .store .store__info { padding: 20px; border: 1px solid rgba(255, 255, 255, 0.5); border-width: 0 1px 1px 1px; text-align: center; }
 .store .store__info a { color: #fff; }
 .store .store__img img { display: block; width: 100%; }
