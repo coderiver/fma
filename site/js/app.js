@@ -84,12 +84,12 @@ $(document).ready(function() {
 	
 	// player
 	$('.js-player').each(function() {
-			$(this)[0].preload="none";
-		});
+		$(this)[0].preload="none";
+	});
 	
 	$(document).on('click', '.player-btn', function() {
 		var player = $(this).closest('.controls').find('.js-player')[0];
-		
+	
 		if (player.paused) {
 			// pause all other songs when play new
 			$('.js-player').each(function() {
@@ -98,20 +98,25 @@ $(document).ready(function() {
 			});
 			$('.player-btn').removeClass('pause').addClass('play');
 	
-	
+			// change button state at active btn
 			$(this).removeClass('play').addClass('pause');
 	
+			// start loading audio
 			player.addEventListener('loadstart', function() {
-			    
+			    player.pause();
 			    $(this).next('.loader').addClass('is-visible');
 			    console.log('start loading song');
 			});
-			player.addEventListener('oncanplaythrough', function() {
-				
+	
+			// finish loading audio
+			player.addEventListener('canplaythrough', function() {
+				player.play();
 			    $(this).next('loader').removeClass('is-visible');
 			    console.log('finished loading song');
 			});
-			player.play();
+	
+			// play audio
+			//player.play();
 			
 			console.log('play');
 		}
