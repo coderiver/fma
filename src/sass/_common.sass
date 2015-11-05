@@ -192,12 +192,15 @@ body
 	display: inline-block
 	width: 18px 	
 	height: 18px
+	audio
+		opacity: 0
+		pointer-events: none
 	.loader
 		position: absolute
 		top: -3px
 		left: -3px
 		z-index: 1
-	.play
+	.player-btn
 		position: absolute
 		top: 0
 		left: 0 
@@ -207,26 +210,26 @@ body
 		line-height: 18px
 		border-radius: 50%
 		text-align: center
-		font-size: 8px
-		color: $violet 
 		z-index: 2
-		.icon-play
-			position: absolute
-			top: 5px
-			left: 8px
-	.pause
-		position: absolute
-		top: 0
-		left: 0
-		background: $violet
-		width: 18px
-		height: 18px
-		line-height: 18px
-		border-radius: 50%
-		text-align: center
-		font-size: 8px
-		color: #fff 
-		z-index: 2 	
+		&.play
+			&:before
+				content: "\EA01"
+				@extend %icon
+				position: absolute
+				top: 5px
+				left: 8px
+				font-size: 8px
+				color: $violet
+		&.pause
+			background: $violet 
+			&:before
+				content: "\EA04"
+				@extend %icon
+				position: absolute
+				top: 5px
+				left: 6px
+				font-size: 8px
+				color: #fff 		 	
 .submit
 	padding: 60px 0
 .btn

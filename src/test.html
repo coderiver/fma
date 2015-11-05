@@ -24,73 +24,12 @@
 				<div class="steps">STEP 1 /4</div>
 				<h1 class="h1">choose a song <div class="face"><img src="img/notes.svg" width="30" alt=""></div></h1>
 			</div>
-			<div class="playlist">
-				<form action="#">
-					<label class="song">
-						<input type="radio" name="song">
-						<div class="song__in">
-							<div class="song__tools">
-								<div class="controls">
-									<button type="button" class="play" style="display: none;">
-										<i class="icon-play"></i>
-									</button>
-									<button type="button" class="pause"><i class="icon-pause"></i></button>
-									<div class="loader is-visible"></div>
-								</div>
-							</div>
-							<div class="song__title">12 DAYS OF CHRISTMAS</div>
-						</div>
-					</label>
-					<label class="song">
-						<input type="radio" name="song">
-						<div class="song__in">
-							<div class="song__tools">
-								<div class="controls">
-									<button type="button" class="play">
-										<i class="icon-play"></i>
-									</button>
-									<button type="button" class="pause" style="display: none;"><i class="icon-pause"></i></button>
-									<div class="loader"></div>
-								</div>
-							</div>
-							<div class="song__title">OH, CHRISTMAS TREE</div>
-						</div>
-					</label>
-					<label class="song">
-						<input type="radio" name="song">
-						<div class="song__in">
-							<div class="song__tools">
-								<div class="controls">
-									<button type="button" class="play">
-										<i class="icon-play"></i>
-									</button>
-									<button type="button" class="pause" style="display: none;"><i class="icon-pause"></i></button>
-									<div class="loader"></div>
-								</div>
-							</div>
-							<div class="song__title">JINGLE BELLS</div>
-						</div>
-					</label>
-					<label class="song">
-						<input type="radio" name="song">
-						<div class="song__in">
-							<div class="song__tools">
-								<div class="controls">
-									<button type="button" class="play">
-										<i class="icon-play"></i>
-									</button>
-									<button type="button" class="pause" style="display: none;"><i class="icon-pause"></i></button>
-									<div class="loader"></div>
-								</div>
-							</div>
-							<div class="song__title">FIGARO</div>
-						</div>
-					</label>
-					<div class="submit">
-						<button type="submit" class="btn">select a scene</button>
-					</div>
-				</form>
-			</div>
+			<form action="#">
+				<div id="playlist-wrap" class="playlist"></div>	
+				<div class="submit">
+					<button type="submit" class="btn">select a scene</button>
+				</div>
+			</form>
 		</section>
 		<!-- footer -->
 		<footer id="footer" class="footer"></footer>
@@ -112,6 +51,27 @@
     <p>
     	<a href="#" class="link">The Abominable Showman</a>
     </p>
+</script>
+<!-- song view -->
+<script type="text/template" id="song">
+    <% _.each(songs, function(song){%>
+			<label class="song">
+				<input type="radio" name="song">
+				<div class="song__in">
+					<div class="song__tools">
+						<div class="controls">
+							<audio class="js-player" controls>
+								<source src="<%=song.url%>" type="audio/mpeg">
+							</audio>
+							<button type="button" class="player-btn play"></button>
+							<div class="loader"></div>
+						</div>
+					</div>
+					<div class="song__title"><%=song.title%></div>
+				</div>
+			</label>
+    	<%});
+    %>
 </script>
 <!-- END out-->
 <script src="js/lib/jquery.js"></script>

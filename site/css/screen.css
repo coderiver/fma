@@ -81,10 +81,12 @@ body { font-family: "NeutrafaceDisplayBold"; -webkit-font-smoothing: antialiased
 .song .song__title { overflow: hidden; font-size: 13px; padding-top: 1px; text-transform: uppercase; font-family: "NeutrafaceDisplayTitling"; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-align: left; color: #fff; overflow: hidden; -ms-text-overflow: ellipsis; text-overflow: ellipsis; white-space: nowrap; }
 
 .controls { position: relative; display: inline-block; width: 18px; height: 18px; }
+.controls audio { opacity: 0; pointer-events: none; }
 .controls .loader { position: absolute; top: -3px; left: -3px; z-index: 1; }
-.controls .play { position: absolute; top: 0; left: 0; background: #fff; width: 18px; height: 18px; line-height: 18px; border-radius: 50%; text-align: center; font-size: 8px; color: #241e50; z-index: 2; }
-.controls .play .icon-play { position: absolute; top: 5px; left: 8px; }
-.controls .pause { position: absolute; top: 0; left: 0; background: #241e50; width: 18px; height: 18px; line-height: 18px; border-radius: 50%; text-align: center; font-size: 8px; color: #fff; z-index: 2; }
+.controls .player-btn { position: absolute; top: 0; left: 0; background: #fff; width: 18px; height: 18px; line-height: 18px; border-radius: 50%; text-align: center; z-index: 2; }
+.controls .player-btn.play:before { content: ""; position: absolute; top: 5px; left: 8px; font-size: 8px; color: #241e50; }
+.controls .player-btn.pause { background: #241e50; }
+.controls .player-btn.pause:before { content: ""; position: absolute; top: 5px; left: 6px; font-size: 8px; color: #fff; }
 
 .submit { padding: 60px 0; }
 
@@ -204,7 +206,7 @@ body { font-family: "NeutrafaceDisplayBold"; -webkit-font-smoothing: antialiased
 .modal .modal__img img { display: block; width: 100%; }
 
 @font-face { font-family: "svgfont"; src: url("fonts/svgfont.eot"); src: url("fonts/svgfont.eot?#iefix") format("eot"), url("fonts/svgfont.woff") format("woff"), url("fonts/svgfont.woff2") format("woff2"), url("fonts/svgfont.ttf") format("truetype"); font-weight: normal; font-style: normal; }
-.checkbox input + span:after, .icon, [class^="icon-"], [class*=" icon-"] { font-family: "svgfont"; font-style: normal; font-weight: normal; text-rendering: auto; speak: none; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+.controls .player-btn.play:before, .controls .player-btn.pause:before, .checkbox input + span:after, .icon, [class^="icon-"], [class*=" icon-"] { font-family: "svgfont"; font-style: normal; font-weight: normal; text-rendering: auto; speak: none; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
 .icon, [class^="icon-"], [class*=" icon-"] { display: inline-block; }
 

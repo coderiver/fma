@@ -1,46 +1,17 @@
 $(document).ready(function() {
-
+	// models
 	var Song = Backbone.Model.extend({
 		defaults: {
 			url: '',
 			title: 'untitled'
 		}
 	});
-
+	
 	var Album = Backbone.Collection.extend({
 		model: Song
 	});
-
-	var song1 = new Song({
-		url: 'http://test.soyer.com.ua/Bi-2_(feat._Yu_._Chicherina)_-_Moi_Rok-N-Roll_.mp3',
-		title: 'Bi-2_(feat._Yu_._Chicherina)_-_Moi_Rok-N-Roll'
-	});
-	var song2 = new Song({
-		url: 'http://test.soyer.com.ua/Korol_I_Shut_-_Kukla_Kolduna.mp3',
-		title: 'Korol_I_Shut_-_Kukla_Kolduna'
-	});
-	var song3 = new Song({
-		url: 'http://test.soyer.com.ua/Smyslovye_Gallyutsinatsii_-_Vechno_Molodoi.mp3',
-		title: 'Smyslovye_Gallyutsinatsii_-_Vechno_Molodoi'
-	});
-	var song4 = new Song({
-		url: 'http://test.soyer.com.ua/Tantsy_Minus_-_Gorod.mp3',
-		title: 'Tantsy_Minus_-_Gorod'
-	});
-
-	var myAlbum = new Album();
-
-	myAlbum.add([song1, song2, song3, song4]);
-
-	console.log(myAlbum.toJSON());
-
-
-	
-});
-$(document).ready(function() {
-
 	// header view
-
+	
 	HeaderView = Backbone.View.extend({
 		initialize: function() {
 			this.render();
@@ -52,13 +23,13 @@ $(document).ready(function() {
 			this.$el.html(template);
 		}
 	});
-
+	
 	var header_view = new HeaderView({
 		el: $('#header')
 	});
-
+	
 	// footer view
-
+	
 	FooterView = Backbone.View.extend({
 		initialize: function() {
 			this.render();
@@ -70,14 +41,37 @@ $(document).ready(function() {
 			this.$el.html(template);
 		}
 	});
-
+	
 	var footer_view = new FooterView({
 		el: $('#footer')
 	});
-
-});
-$(document).ready(function() {
-
+	
+	// playlist
+	
+	Playlist = Backbone.View.extend({
+		el: '#playlist-wrap',
+	
+		initialize: function() {
+			this.template = _.template($('#song').html());
+			
+			this.collection = new Album();
+	
+			this.listenTo(this.collection, 'all', this.render);
+	
+			this.collection.fetch({
+				url: 'js/data/playlist.json'
+			});
+			
+		},
+		render: function() {
+			
+			var html = this.template( {songs: this.collection.toJSON()} );
+			this.$el.html(html);
+			return this;
+		}
+	});
+	
+	playlist = new Playlist();
 	// slider
 	if ($('.js-slider').length) {
 		$('.js-slider').slick({
@@ -87,5 +81,27 @@ $(document).ready(function() {
 			slidesToScroll: 1
 		});
 	};
-
+	
+	// player
+	
+	$(document).on('click', '.player-btn', function() {
+		var player = $(this).closest('.controls').find('.js-player')[0];
+	
+		if (player.paused) {
+			// pause all other songs when play new
+			$('.js-player').each(function() {
+				$(this)[0].pause();
+			});
+			$('.player-btn').removeClass('pause').addClass('play');
+	
+			player.play();
+			$(this).removeClass('play').addClass('pause');
+			console.log('play');
+		}
+		else {
+			player.pause();
+			$(this).removeClass('pause').addClass('play');
+			console.log('pause');
+		}
+	});
 });
