@@ -103,20 +103,20 @@ $(document).ready(function() {
 	
 			// start loading audio
 			player.addEventListener('loadstart', function() {
-			    player.pause();
+			    
 			    $(this).next('.loader').addClass('is-visible');
 			    console.log('start loading song');
 			});
 	
 			// finish loading audio
 			player.addEventListener('canplaythrough', function() {
-				player.play();
+				
 			    $(this).next('loader').removeClass('is-visible');
 			    console.log('finished loading song');
 			});
 	
 			// play audio
-			//player.play();
+			player.play();
 			
 			console.log('play');
 		}
