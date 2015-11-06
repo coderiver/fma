@@ -88,6 +88,126 @@ ChooseBg = Backbone.View.extend({
 
 chooseBg = new ChooseBg();
 
+// choose photo view
+ChoosePhoto = Backbone.View.extend({
+	el: '#container',
+	render: function(){
+		var html = _.template( $('#choose-photo').html(), {} );
+		this.$el.html(html);
+		return this;
+	}
+});
+
+choosePhoto = new ChoosePhoto();
+
+// photo preview
+PhotoPreview = Backbone.View.extend({
+	el: '#container',
+	render: function(){
+		var html = _.template( $('#preview-photo').html(), {} );
+		this.$el.html(html);
+		return this;
+	}
+});
+
+photoPreview = new PhotoPreview();
+
+// loading
+Loading = Backbone.View.extend({
+	el: '#container',
+	render: function(){
+		var html = _.template( $('#loading').html(), {} );
+		this.$el.html(html);
+		return this;
+	}
+});
+
+loading = new Loading();
+
+// gift
+Gift = Backbone.View.extend({
+	el: '#container',
+	initialize: function(){
+		this.render();
+		$('.js-slider').slick({
+			arrows: false,
+			dots: true,
+			slidesToShow: 1,
+			slidesToScroll: 1
+		});
+
+	},
+	render: function(){
+		var html = _.template( $('#gift').html(), {} );
+		this.$el.html(html);
+		return this;
+	}
+});
+
+gift = new Gift();
+
+// send gift to store page
+SendGift = Backbone.View.extend({
+	el: '#container',
+	initialize: function() {
+		this.render();
+	},
+	render: function(){
+		var html = _.template( $('#send-gift').html(), {} );
+		this.$el.html(html);
+		return this;
+	}
+});
+
+sendGift = new SendGift();
+
+// thanks page view
+Thanks = Backbone.View.extend({
+	el: '#container',
+	initialize: function() {
+		this.render();
+	},
+	render: function(){
+		var html = _.template( $('#thanks').html(), {} );
+		this.$el.html(html);
+		return this;
+	}
+});
+
+thanks = new Thanks();
+
+// greeting page
+Greeting = Backbone.View.extend({
+	el: '#container',
+	initialize: function() {
+		this.render();
+	},
+	render: function(){
+		var html = _.template( $('#greeting').html(), {} );
+		this.$el.html(html);
+		return this;
+	}
+});
+
+greeting = new Greeting();
+
+// terms page
+Terms = Backbone.View.extend({
+	el: '#container',
+	initialize: function() {
+		this.render();
+	},
+	render: function(){
+		var html = _.template( $('#terms').html(), {} );
+		this.$el.html(html);
+		return this;
+	}
+});
+
+terms = new Terms();
+
+
+
 
 
 
