@@ -15,99 +15,114 @@
 <body>
 <!-- BEGIN  out-->
 <div class="out">
-	<header class="header">
-		<div class="header__in">
-			<a href="#" class="logo">
-				<img src="img/logo.svg" width="120" alt="">
-			</a>
-		</div>
-	</header>
-	<main id="container" class="main">
-		<!-- first screen -->
-		<section class="audio">
-			<div class="topper">
-				<div class="steps">STEP 1 /4</div>
-				<h1 class="h1">choose a song <div class="face"><img src="img/notes.svg" width="30" alt=""></div></h1>
-			</div>
-			<div class="playlist">
-				<form action="#">
-					<label class="song">
-						<input type="radio" name="song">
-						<div class="song__in">
-							<div class="song__tools">
-								<div class="controls">
-									<button type="button" class="play" style="display: none;">
-										<i class="icon-play"></i>
-									</button>
-									<button type="button" class="pause"><i class="icon-pause"></i></button>
-									<div class="loader is-visible"></div>
-								</div>
-							</div>
-							<div class="song__title">12 DAYS OF CHRISTMAS</div>
-						</div>
-					</label>
-					<label class="song">
-						<input type="radio" name="song">
-						<div class="song__in">
-							<div class="song__tools">
-								<div class="controls">
-									<button type="button" class="play">
-										<i class="icon-play"></i>
-									</button>
-									<button type="button" class="pause" style="display: none;"><i class="icon-pause"></i></button>
-									<div class="loader"></div>
-								</div>
-							</div>
-							<div class="song__title">OH, CHRISTMAS TREE</div>
-						</div>
-					</label>
-					<label class="song">
-						<input type="radio" name="song">
-						<div class="song__in">
-							<div class="song__tools">
-								<div class="controls">
-									<button type="button" class="play">
-										<i class="icon-play"></i>
-									</button>
-									<button type="button" class="pause" style="display: none;"><i class="icon-pause"></i></button>
-									<div class="loader"></div>
-								</div>
-							</div>
-							<div class="song__title">JINGLE BELLS</div>
-						</div>
-					</label>
-					<label class="song">
-						<input type="radio" name="song">
-						<div class="song__in">
-							<div class="song__tools">
-								<div class="controls">
-									<button type="button" class="play">
-										<i class="icon-play"></i>
-									</button>
-									<button type="button" class="pause" style="display: none;"><i class="icon-pause"></i></button>
-									<div class="loader"></div>
-								</div>
-							</div>
-							<div class="song__title">FIGARO</div>
-						</div>
-					</label>
-					<div class="submit">
-						<button type="submit" class="btn">select a scene</button>
-					</div>
-				</form>
-			</div>
-		</section>
-		<!-- footer -->
-		<footer class="footer">
-			<p>
-				<a href="#" class="link">Ted Baker Presents</a>
-			</p>
-			<p>
-				<a href="#" class="link">The Abominable Showman</a>
-			</p>
-		</footer>
-	</main>
+	<!-- header -->
+	<header id="header" class="header"></header>
+	<main id="container" class="main"></main>
+	<!-- footer -->
+	<footer id="footer" class="footer"></footer>
 </div>
+<!-- header template -->
+<script type="text/template" id="header_template">
+    <div class="header__in">
+    	<a href="#" class="logo">
+    		<img src="img/logo.svg" width="120" alt="">
+    	</a>
+    </div>
+</script>
+<!-- footer template -->
+<script type="text/template" id="footer_template">
+    <p>
+    	<a href="#" class="link">Ted Baker Presents</a>
+    </p>
+    <p>
+    	<a href="#" class="link">The Abominable Showman</a>
+    </p>
+</script>
+<!-- playlist view -->
+<script type="text/template" id="playlist_template">
+    <!-- audio -->
+    <section class="audio">
+    	<div class="topper">
+    		<div class="steps">STEP 1 /4</div>
+    		<h1 class="h1">choose a song <div class="face"><img src="img/notes.svg" width="30" alt=""></div></h1>
+    	</div>
+    	<form action="#">
+    		<div id="playlist-wrap" class="playlist"></div>	
+    		<div class="submit">
+    			<a href="#/step/2" class="btn">select a scene</a>
+    		</div>
+    	</form>
+    </section>
+</script>
+<!-- song view -->
+<script type="text/template" id="song">
+    <% _.each(songs, function(song){%>
+			<label class="song">
+				<input type="radio" name="song">
+				<div class="song__in">
+					<div class="song__tools">
+						<div class="controls">
+							<audio class="js-player" controls>
+								<source src="<%=song.url%>" type="audio/mpeg">
+							</audio>
+							<button type="button" class="player-btn play"></button>
+							<div class="loader"></div>
+						</div>
+					</div>
+					<div class="song__title"><%=song.title%></div>
+				</div>
+			</label>
+    	<%});
+    %>
+</script>
+<!-- choose background -->
+<script type="text/template" id="choose-bg">
+	<section class="background">
+		<div class="topper">
+			<div class="steps">STEP 2 /4</div>
+			<h1 class="h1">choose a background <div class="face"><img src="img/notes.svg" width="30" alt=""></div></h1>
+		</div>
+		<form action="#">
+			<div class="scene-wrap">
+				<label class="scene">
+					<input type="radio" name="scene">
+					<div class="scene__in">
+						<div class="scene__img">
+							<img src="img/scene1.jpg" alt="">
+						</div>
+					</div>
+				</label>
+				<label class="scene">
+					<input type="radio" name="scene">
+					<div class="scene__in">
+						<div class="scene__img">
+							<img src="img/scene2.jpg" alt="">
+						</div>
+					</div>
+				</label>
+				<label class="scene">
+					<input type="radio" name="scene">
+					<div class="scene__in">
+						<div class="scene__img">
+							<img src="img/scene3.jpg" alt="">
+						</div>
+					</div>
+				</label>
+				<label class="scene">
+					<input type="radio" name="scene">
+					<div class="scene__in">
+						<div class="scene__img">
+							<img src="img/scene4.jpg" alt="">
+						</div>
+					</div>
+				</label>
+			</div>
+			<div class="submit">
+				<button type="submit" class="btn btn_wide">Now, Let’s Take a Picture</button>
+			</div>
+		</form>
+	</section>
+</script>
 <!-- END out-->
 <script src="js/lib/jquery.js"></script>
 <script src="js/lib/slick.min.js"></script>

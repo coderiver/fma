@@ -34,7 +34,7 @@ var footer_view = new FooterView({
 	el: $('#footer')
 });
 
-// playlist
+// playlist view
 
 Playlist = Backbone.View.extend({
 	el: '#playlist-wrap',
@@ -59,4 +59,31 @@ Playlist = Backbone.View.extend({
 	}
 });
 
-playlist = new Playlist();
+
+ChooseAudio = Backbone.View.extend({
+	el: '#container',
+	initialize: function() {
+		this.render();
+		playlist = new Playlist();
+	},
+	render: function(){
+		var html = _.template( $('#playlist_template').html(), {} );
+		this.$el.html(html);
+
+		return this;
+	}
+});
+
+chooseAudio = new ChooseAudio();
+
+// choose background view
+ChooseBg = Backbone.View.extend({
+	el: '#container',
+	render: function(){
+		var html = _.template( $('#choose-bg').html(), {} );
+		this.$el.html(html);
+		return this;
+	}
+});
+
+chooseBg = new ChooseBg();
