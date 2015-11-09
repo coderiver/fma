@@ -11,6 +11,24 @@
 	<!-- <meta name="viewport" content="initial-scale=1, user-scalable=no"> -->
 	<link rel="stylesheet" media="all" href="css/screen.css" >
 	<!--[if IE]><script src="js/html5shiv.js"></script><![endif]-->
+
+	<script type="text/javascript" src="js/vendor/shoman_client.js"></script>
+	<script type="text/javascript" src="js/vendor/getVideo.js"></script> 
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+
+	<script type="text/javascript" src="js/vendor/jquery.panzoom.js"></script>
+
+
+	<script type="text/javascript" src="js/vendor/crop.js"></script>
+
+	<script type="text/javascript" src="js/vendor/point.js"></script> 
+	<script type="text/javascript" src="js/vendor/matrix22.js"></script>  
+	<script type="text/javascript" src="js/vendor/deformation.js"></script>
+	<script type="text/javascript" src="js/vendor/interpolation.js"></script>  
+	<script type="text/javascript" src="js/vendor/point_definer.js"></script> 
+
 </head>
 <body>
 <!-- BEGIN  out-->
@@ -155,9 +173,49 @@
 			</div>
 		</div>
 		<label class="file">
-			<input type="file">
+			<input type="file" class="js-loadfile">
 			<span class="btn">TAKE / SELECT A Photo</span>
+			<button class="btn js-crop">Crop</button>
 		</label>
+		// begin newcode
+		<div class=" restrict">
+		<div class="crop-wrapper">
+		    <div class="top-overlay">
+		    </div>
+		    <div class="bottom-overlay">
+		    </div>
+		    <div class="left-overlay">
+		    </div>
+		    <div class="right-overlay">
+		    </div>
+
+
+		    <div class="overlay">
+		     <div class="cropped_image">
+		     </div>
+
+		     <div class="overlay-inner">
+		     </div>
+		     <div id="guide">
+		      <img src="img/oval.png"/>
+		    </div>  
+		  </div>
+		  <div id="guide_points">
+		    <div id="guide_eye_l" class="drag_point">
+		      <img src="img/guide_point.png"/>
+		    </div>
+		    <div id="guide_eye_r" class="drag_point">
+		      <img src="img/guide_point.png" />
+		    </div>
+		    <div id="guide_nose" class="drag_point">
+		      <img src="img/guide_point.png"/>
+		    </div>
+		    <div id="guide_mouth" class="drag_point">
+		      <img src="img/guide_point.png"/>
+		    </div>
+		  </div>
+		  </div>
+		  // end newcode
 		<a href="#/step/4" class="link">link to step 4</a>
 	</section>
 </script>
