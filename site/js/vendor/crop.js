@@ -1,18 +1,29 @@
 
 window.current_state="cropping";
 
-
-$('.btn_next').hide();
-$('.resize-container').hide();
-$('#guide_points').hide();
+$( document ).ready(function() {
+  console.log( "ready!" );
+  resizeableImage($('.resize-image'));
+});
 
 
 
 var resizeableImage = function(image_target) {
 
+
+
+$('.btn_next').hide();
+$('.resize-container').hide();
+$('#guide_points').hide();
+
+  
+  // console.log("Panzoom inited",$.Panzoom);
+  console.log("crop inited",image_target);
+  // $(image_target).panzoom();
   // Some variable and settings
+
+  var orig_src = new Image();
   var $container,
-  orig_src = new Image(),
   image_target = $(image_target).get(0),
   event_state = {},
   constrain = false,
@@ -38,62 +49,62 @@ var resizeableImage = function(image_target) {
     reader.readAsDataURL(files[0]);
   });
   
-  //add the reset evewnthandler
-  $('.js-reset').click(function() {
-    if(imageData)
-      loadData();
-  });
+    //add the reset evewnthandler
+    $('.js-reset').click(function() {
+      if(imageData)
+        loadData();
+    });
 
-  $('.btn_next').click(function() {
-    if(window.current_state=="cropping"){
+    $('.btn_next').click(function() {
+      if(window.current_state=="cropping"){
 
-      $('#usr_msg h1').text("Move point to define your nose, press next when you are done");
-      window.current_state="point_nose";
+        $('#usr_msg h1').text("Move point to define your nose, press next when you are done");
+        window.current_state="point_nose";
 
-      $('#guide_eye_l').css('visibility', 'hidden');
-      $('#guide_eye_r').css('visibility', 'hidden');
-      $('#guide_nose').css('visibility', 'visible');
-      $('#guide_mouth').css('visibility', 'hidden');
-
-
-    }else  if(window.current_state=="point_nose"){
-
-      $('#usr_msg h1').text("Move point to define your mouth, press next when you are done");
-      window.current_state="point_mouth";
-
-      $('#guide_eye_l').css('visibility', 'hidden');
-      $('#guide_eye_r').css('visibility', 'hidden');
-      $('#guide_nose').css('visibility', 'hidden');
-      $('#guide_mouth').css('visibility', 'visible');
-
-    }else  if(window.current_state=="point_mouth"){
-
-      $('.btn_next').hide();
-      $('#usr_msg h1').text("Your video will be generated soon");
-      $('#guide_mouth').css('visibility', 'hidden');
-  
-      window.current_state="warp";
-
-      var coord=new Object();
-      coord.leftEye=[ $('#guide_eye_l').offset().left,$('#guide_eye_l').offset().top];
-      coord.rightEye=[ $('#guide_eye_r').offset().left,$('#guide_eye_l').offset().top];
-      coord.Nose=[ $('#guide_nose').offset().left,$('#guide_eye_l').offset().top];
-      coord.Mouth=[ $('#guide_mouth').offset().left,$('#guide_eye_l').offset().top];
-      var  warper = new ImgWarper.PointDefiner(window.canvas, window.img, window.img_data,coord,generate_video);
-
-    }
+        $('#guide_eye_l').css('visibility', 'hidden');
+        $('#guide_eye_r').css('visibility', 'hidden');
+        $('#guide_nose').css('visibility', 'visible');
+        $('#guide_mouth').css('visibility', 'hidden');
 
 
-  });
+      }else  if(window.current_state=="point_nose"){
 
+        $('#usr_msg h1').text("Move point to define your mouth, press next when you are done");
+        window.current_state="point_mouth";
 
+        $('#guide_eye_l').css('visibility', 'hidden');
+        $('#guide_eye_r').css('visibility', 'hidden');
+        $('#guide_nose').css('visibility', 'hidden');
+        $('#guide_mouth').css('visibility', 'visible');
 
+      }else  if(window.current_state=="point_mouth"){
 
+        $('.btn_next').hide();
+        $('#usr_msg h1').text("Your video will be generated soon");
+        $('#guide_mouth').css('visibility', 'hidden');
+
+        window.current_state="warp";
+
+        var coord=new Object();
+        coord.leftEye=[ $('#guide_eye_l').offset().left,$('#guide_eye_l').offset().top];
+        coord.rightEye=[ $('#guide_eye_r').offset().left,$('#guide_eye_l').offset().top];
+        coord.Nose=[ $('#guide_nose').offset().left,$('#guide_eye_l').offset().top];
+        coord.Mouth=[ $('#guide_mouth').offset().left,$('#guide_eye_l').offset().top];
+        var  warper = new ImgWarper.PointDefiner(window.canvas, window.img, window.img_data,coord,generate_video);
+
+      }
 
 
 
     // When resizing, we will always use this copy of the original as the base
     orig_src.src=image_target.src;
+
+  });
+
+
+
+
+
 
     // Wrap the image with the container and add resize handles
     $(image_target).height(init_height)
@@ -233,8 +244,6 @@ crop = function(){
 init();
 };
 
-resizeableImage($('.resize-image'));
-
 
 
 function activate_drag_points(){
@@ -266,11 +275,8 @@ function activate_drag_points(){
 
 
 function generate_video(canvas){
-  
-   window.getVideo(canvas);
+
+ window.getVideo(canvas);
 
 
 }
-
-window.current_state="cropping";
-resizeableImage($('.resize-image'));

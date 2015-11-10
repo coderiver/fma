@@ -1,7 +1,6 @@
 
 window.current_state="cropping";
 
-
 $('.btn_next').hide();
 $('.resize-container').hide();
 $('#guide_points').hide();
@@ -233,12 +232,10 @@ crop = function(){
 init();
 };
 
-resizeableImage($('.resize-image'));
-
 
 
 function activate_drag_points(){
-  $('#usr_msg h1').text("Move points to define your pupils, press next when you are done");
+  $('#usr_msg').text("Move points to define your pupils, press next when you are done");
   $('.btn_next').show();
   $('#crop_buttons').hide();
   $('#guide').hide();

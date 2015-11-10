@@ -1,10 +1,15 @@
 .restrict
-	width: 530px 
-	height: 630px 
+	width: 512px 
+	height: 512px 
 	border: 2px solid red
 	overflow: hidden
+	margin: 0 auto 
+	transform: scale(.45)
+	transform-origin: 50% 0 
+	
+	
 .crop-wrapper
-	background-color: rgba(255, 255, 255, 1)
+	background-color: rgba(255, 255, 255,0)
 	position: relative
 	width: 100%
 	height: 90vh
@@ -74,16 +79,19 @@
 	margin-top: -256px
 	position: absolute
 	pointer-events: none
+	display: none
+	
 
 .bottom-overlay
 	z-index: 990
-	background-color: rgba(222, 222, 222, 0.6)
+	background-color: rgba(0, 0, 0, 0.6)
 	width: 100%
 	height: 50%
 	margin-bottom: -256px
 	position: absolute
 	bottom: 0
 	pointer-events: none
+	display: none
 
 .right-overlay
 	z-index: 990
@@ -110,10 +118,14 @@
 
 .overlay
 	position: absolute
-	left: 50%
-	top: 50%
-	margin-left: -256px
-	margin-top: -256px
+	// left: 50%
+	// top: 50%
+	// margin-left: -256px
+	// margin-top: -256px
+	top: 0
+	left: 0 
+	  
+	
 	z-index: 999
 	width: 512px
 	height: 512px

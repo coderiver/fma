@@ -96,6 +96,8 @@ gulp.task('js', function () {
 gulp.task('copy', function() {
    gulp.src('src/img/*.*')
    .pipe(gulp.dest('site/img/'));
+   gulp.src('src/js/vendor/*.*')
+   .pipe(gulp.dest('site/js/vendor/'));
    gulp.src('src/fonts/*.*')
    .pipe(gulp.dest('site/css/fonts/'));
    gulp.src('src/video/*.*')
