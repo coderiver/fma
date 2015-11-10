@@ -4,6 +4,9 @@ window.current_state="cropping";
 $( document ).ready(function() {
   console.log( "ready!" );
   resizeableImage($('.resize-image'));
+  $('.restrict').hide();
+  $('.js-crop').hide();
+  $('.terms').hide();
 });
 
 
@@ -47,6 +50,13 @@ $('#guide_points').hide();
       loadData();
     }
     reader.readAsDataURL(files[0]);
+
+    // go to step2
+    $('.js-crop').show();
+    $('label.file').hide();
+    $('.restrict').show();
+    $('.photo__in').hide();
+
   });
   
     //add the reset evewnthandler
@@ -58,7 +68,7 @@ $('#guide_points').hide();
     $('.btn_next').click(function() {
       if(window.current_state=="cropping"){
 
-        $('#usr_msg h1').text("Move point to define your nose, press next when you are done");
+        $('#usr_msg').text("Move point to define your nose, press next when you are done");
         window.current_state="point_nose";
 
         $('#guide_eye_l').css('visibility', 'hidden');
@@ -69,7 +79,7 @@ $('#guide_points').hide();
 
       }else  if(window.current_state=="point_nose"){
 
-        $('#usr_msg h1').text("Move point to define your mouth, press next when you are done");
+        $('#usr_msg').text("Move point to define your mouth, press next when you are done");
         window.current_state="point_mouth";
 
         $('#guide_eye_l').css('visibility', 'hidden');
@@ -77,10 +87,12 @@ $('#guide_points').hide();
         $('#guide_nose').css('visibility', 'hidden');
         $('#guide_mouth').css('visibility', 'visible');
 
+
       }else  if(window.current_state=="point_mouth"){
 
-        $('.btn_next').hide();
-        $('#usr_msg h1').text("Your video will be generated soon");
+        $('.terms').show();
+        $('.btn_next').text('LET ME SHOW MAN SING!');
+        $('#usr_msg').text("Your video will be generated soon");
         $('#guide_mouth').css('visibility', 'hidden');
 
         window.current_state="warp";

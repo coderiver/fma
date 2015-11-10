@@ -110,7 +110,7 @@ body { font-family: "NeutrafaceDisplayBold"; -webkit-font-smoothing: antialiased
 
 .photo { margin-bottom: 60px; }
 
-.photo-wrap { position: relative; margin-bottom: 30px; }
+.photo-wrap { position: relative; margin-bottom: 30px; height: 230px; }
 .photo-wrap .photo__in { position: relative; width: 230px; margin: 0 auto; }
 .photo-wrap .photo__in img { display: block; width: 100%; }
 
@@ -273,7 +273,7 @@ body { font-family: "NeutrafaceDisplayBold"; -webkit-font-smoothing: antialiased
 .l .l-col1 { float: left; width: 20%; }
 .l .l-col2 { float: right; width: 70%; }
 
-.restrict { width: 512px; height: 512px; border: 2px solid red; overflow: hidden; margin: 0 auto; -webkit-transform: scale(0.45); -ms-transform: scale(0.45); transform: scale(0.45); -webkit-transform-origin: 50% 0; -ms-transform-origin: 50% 0; transform-origin: 50% 0; }
+.restrict { width: 512px; height: 512px; overflow: hidden; margin: 0 auto; -webkit-transform: scale(0.45); -ms-transform: scale(0.45); transform: scale(0.45); -webkit-transform-origin: 50% 0; -ms-transform-origin: 50% 0; transform-origin: 50% 0; position: absolute; left: 50%; margin-left: -256px; top: 0; }
 
 .crop-wrapper { background-color: rgba(255, 255, 255, 0); position: relative; width: 100%; height: 90vh; overflow: hidden; }
 
@@ -303,7 +303,7 @@ body { font-family: "NeutrafaceDisplayBold"; -webkit-font-smoothing: antialiased
 
 .left-overlay { z-index: 990; background-color: rgba(222, 222, 222, 0.6); width: 50%; height: 512px; top: 50%; right: 0px; margin-top: -256px; margin-right: -256px; position: absolute; pointer-events: none; }
 
-.overlay { position: absolute; top: 0; left: 0; z-index: 999; width: 512px; height: 512px; border: solid 2px rgba(222, 222, 222, 0.9); box-sizing: content-box; pointer-events: none; }
+.overlay { position: absolute; top: 0; left: 0; z-index: 999; width: 512px; height: 512px; box-sizing: content-box; pointer-events: none; }
 
 .overlay:before { top: 0; margin-left: -2px; margin-top: -40px; }
 
@@ -331,7 +331,7 @@ body { font-family: "NeutrafaceDisplayBold"; -webkit-font-smoothing: antialiased
 
 .drag_point.is-dragging { opacity: 0.7; }
 
-#usr_msg { font-size: 20; vertical-align: middle; }
+#usr_msg { vertical-align: middle; margin-top: 10px; }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px){
  *{ -webkit-text-size-adjust: none; } }

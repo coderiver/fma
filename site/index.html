@@ -165,52 +165,62 @@
 						<div class="hint__bottom">For best results</div>
 					</div>
 				</div>
+
+				<!-- BEGIN RESTRICT -->
+				<!--begin new code -->
+				<div class=" restrict">
+					<div class="crop-wrapper">
+
+						<div class="overlay">
+							<div class="cropped_image">
+							</div>
+
+							<div class="overlay-inner">
+							</div>
+							<div id="guide">
+								<img src="img/oval.png"/>
+							</div>  
+						</div>
+						<div id="guide_points">
+							<div id="guide_eye_l" class="drag_point ">
+								<img src="img/leftEye.png"/>
+							</div>
+							<div id="guide_eye_r" class="drag_point ">
+								<img src="img/rightEye.png"/>
+							</div>
+							<div id="guide_nose" class="drag_point ">
+								<img src="img/nose.png"/>
+							</div>
+							<div id="guide_mouth" class="drag_point ">
+								<img src="img/mouse.png"/>
+							</div>
+						</div>
+
+						<img id="imgR" class="resize-image" src=""  alt="image for resizing">
+					</div></div>
+				<!-- END RESTRICT -->
+			</div>
+			<!-- end photo-wrap -->
+			<div class="terms">
+				<label class="checkbox">
+					<input type="checkbox">
+					<span>I agree to <a href="#/terms">Terms and Use</a></span>
+				</label>
 			</div>
 			<div id="crop_buttons">
 				<label class="file">
 					<input type="file" class="js-loadfile">
 					<span class="btn">TAKE / SELECT A Photo</span>
-					<button class="btn js-crop">Crop</button>
+					
 				</label>
+				<button class="btn js-crop">Crop</button>
 			</div>
 			<button class="btn btn_next">Next</button>
 			<div id="usr_msg"></div>
-		<!--begin new code -->
-		<div class=" restrict">
-			<div class="crop-wrapper">
+		
 
-				<div class="overlay">
-					<div class="cropped_image">
-					</div>
 
-					<div class="overlay-inner">
-					</div>
-					<div id="guide">
-						<img src="img/oval.png"/>
-					</div>  
-				</div>
-				<div id="guide_points">
-					<div id="guide_eye_l" class="drag_point ">
-						<img src="img/leftEye.png"/>
-					</div>
-					<div id="guide_eye_r" class="drag_point ">
-						<img src="img/rightEye.png"/>
-					</div>
-					<div id="guide_nose" class="drag_point ">
-						<img src="img/nose.png"/>
-					</div>
-					<div id="guide_mouth" class="drag_point ">
-						<img src="img/mouse.png"/>
-					</div>
-				</div>
-
-				<img id="imgR" class="resize-image" src=""  alt="image for resizing">
-			</div>
-
-			   // console.log("section warp is running");
-
-			  // end newcode
-			  <a href="#/step/4" class="link">link to step 4</a>
+			 
 			</section>
 		</script>
 		<!-- preview photo -->
