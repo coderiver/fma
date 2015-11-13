@@ -1,0 +1,463 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>index</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="format-detection" content="telephone=no">
+	<!-- theme color for android 5.0 -->
+	<meta name="theme-color" content="#1a163c">
+	<!-- <meta name="viewport" content="width=1200"> -->
+	<!-- <meta name="viewport" content="initial-scale=1, user-scalable=no"> -->
+	<link rel="stylesheet" media="all" href="css/screen.css" >
+	<!--[if IE]><script src="js/html5shiv.js"></script><![endif]-->
+
+	<script type="text/javascript" src="js/vendor/shoman_client.js"></script>
+	<script type="text/javascript" src="js/vendor/getVideo.js"></script> 
+
+
+
+	<script type="text/javascript" src="js/vendor/point.js"></script> 
+	<script type="text/javascript" src="js/vendor/matrix22.js"></script>  
+	<script type="text/javascript" src="js/vendor/deformation.js"></script>
+	<script type="text/javascript" src="js/vendor/interpolation.js"></script>  
+	<script type="text/javascript" src="js/vendor/point_definer.js"></script> 
+
+</head>
+<body class="is-desktop">
+	<!-- BEGIN  out-->
+	<div class="out">
+		<!-- header -->
+		<header id="header" class="header"></header>
+		<main id="container" class="main"></main>
+		<!-- footer -->
+		<footer id="footer" class="footer"></footer>
+	</div>
+	<!-- header template -->
+	<script type="text/template" id="header_template">
+		<div class="header__in">
+			<div class="header__back"></div>
+			<a href="#" class="logo">
+				<img src="img/logo.svg" width="120" alt="">
+			</a>
+		</div>
+	</script>
+	<!-- footer template -->
+	<script type="text/template" id="footer_template">
+		<p>
+			<a href="#" class="link">Ted Baker Presents</a>
+		</p>
+		<p>
+			<a href="#" class="link">The Abominable Showman</a>
+		</p>
+	</script>
+	<!-- playlist view -->
+	<script type="text/template" id="playlist_template">
+		<!-- audio -->
+		<section class="audio">
+			<div class="topper">
+				<div class="steps">STEP 1 /4</div>
+				<h1 class="h1">choose a song <div class="face"><img src="img/notes.svg" width="30" alt=""></div></h1>
+			</div>
+			<form action="#">
+				<div id="playlist-wrap" class="playlist"></div>	
+				<div class="submit">
+					<a href="#/step/2" class="btn">select a scene</a>
+				</div>
+			</form>
+		</section>
+	</script>
+	<!-- song view -->
+	<script type="text/template" id="song">
+		<% _.each(songs, function(song){%>
+			<label class="song">
+				<input type="radio" name="song">
+				<div class="song__in">
+					<div class="song__tools">
+						<div class="controls">
+							<audio class="js-player" controls>
+								<source src="<%=song.url%>" type="audio/mpeg">
+								</audio>
+								<button type="button" class="player-btn play"></button>
+								<div class="loader"></div>
+							</div>
+						</div>
+						<div class="song__title"><%=song.title%></div>
+					</div>
+				</label>
+				<%});
+		%>
+	</script>
+	<!-- choose background -->
+	<script type="text/template" id="choose-bg">
+		<section class="background">
+			<div class="topper">
+				<div class="steps">STEP 2 /4</div>
+				<h1 class="h1">choose a background <div class="face"><img src="img/notes.svg" width="30" alt=""></div></h1>
+			</div>
+			<form action="#">
+				<div class="scene-wrap">
+					<label class="scene">
+						<input type="radio" name="scene">
+						<div class="scene__in">
+							<div class="scene__img">
+								<img src="img/scene1.jpg" alt="">
+							</div>
+						</div>
+					</label>
+					<label class="scene">
+						<input type="radio" name="scene">
+						<div class="scene__in">
+							<div class="scene__img">
+								<img src="img/scene2.jpg" alt="">
+							</div>
+						</div>
+					</label>
+					<label class="scene">
+						<input type="radio" name="scene">
+						<div class="scene__in">
+							<div class="scene__img">
+								<img src="img/scene3.jpg" alt="">
+							</div>
+						</div>
+					</label>
+					<label class="scene">
+						<input type="radio" name="scene">
+						<div class="scene__in">
+							<div class="scene__img">
+								<img src="img/scene4.jpg" alt="">
+							</div>
+						</div>
+					</label>
+				</div>
+				<div class="submit" >
+					<a href="#/step/3" class="btn btn_wide">Now, Let’s Take a Picture</a>
+				</div>
+			</form>
+		</section>
+	</script>
+	<!-- take photo -->
+	<script type="text/template" id="choose-photo">
+		<!-- photo -->
+		<section class="photo">
+			<div class="topper">
+				<div class="steps">STEP 3 /4</div>
+				<h1 class="h1">insert a photo <div class="face"><img src="img/notes.svg" width="30" alt=""></div></h1>
+			</div>
+			<div class="photo-wrap">
+				<div class="photo__in">
+					<img src="img/fma-photo-example.jpg" alt="">
+					<div class="hint">
+						<div class="hint__first">
+							<img src="img/arr1.svg" alt="">
+							<p>show</p>
+							<p>forehead</p>
+						</div>
+						<div class="hint__second">
+							<img src="img/arr2.svg" alt="">
+							<p>face</p>
+							<p>forward</p>
+						</div>
+						<div class="hint__third">
+							<img src="img/arr3.svg" alt="">
+							<p>close</p>
+							<p>mouth</p>
+						</div>
+						<div class="hint__bottom">For best results</div>
+					</div>
+				</div>
+
+				<!-- BEGIN RESTRICT -->
+				<!--begin new code -->
+				<div class=" restrict">
+					<div class="crop-wrapper">
+						<div id="video_holder">
+						</div>
+						<div class="overlay">
+							<div class="cropped_image">
+							</div>
+
+							<div class="overlay-inner">
+							</div>
+							<div id="guide">
+								<img id="guide_img" src="img/crop/step1-face.png"/>
+							</div>  
+						</div>
+						<div id="guide_points">
+							<div id="guide_eye_l" class="drag_point ">
+								<img src="img/crop/step2-eye.png" width="50%" height="50%"/>
+							</div>
+							<div id="guide_eye_r" class="drag_point ">
+								<img  src="img/crop/step2-eye.png" width="50%" height="50%"/>
+							</div>
+							<div id="guide_nose" class="drag_point ">
+								<img  src="img/crop/step3-nose.png" width="50%" height="50%"/>
+							</div>
+							<div id="guide_mouth" class="drag_point ">
+								<img  src="img/crop/step4-mouth.png" width="50%" height="50%"/>
+							</div>
+						</div>
+
+						<img id="imgR"  class="resize-image" src="img/empty.png"  alt="image for resizing">
+					</div></div>
+					<!-- END RESTRICT -->
+				</div>
+				<!-- end photo-wrap -->
+				<div class="terms">
+					<label class="checkbox">
+						<input type="checkbox">
+						<span>I agree to <a href="#/terms">Terms and Use</a></span>
+					</label>
+				</div>
+				<div id="crop_buttons">
+					<label class="file">
+						<input type="file" class="js-loadfile">
+						<span class="btn">TAKE / SELECT A Photo</span>
+
+					</label>
+					<button class="btn js-crop">Crop</button>
+				</div>
+				<button class="btn btn_next">Next</button>
+				<div id="usr_msg"></div>
+
+
+
+
+			</section>
+		</script>
+		<!-- preview photo -->
+		<script type="text/template" id="preview-photo">
+			<!-- photo -->
+			<section class="photo">
+				<div class="topper">
+					<div class="steps">STEP 4 /4</div>
+					<h1 class="h1">preview photo <div class="face"><img src="img/notes.svg" width="30" alt=""></div></h1>
+				</div>
+				<div class="photo-wrap">
+					<div class="photo__in">
+						<img src="img/fma-photo-example.jpg" alt="">
+						<div class="lefteye" style="top: 70px; left: 83px;"></div>
+						<div class="righteye" style="top: 70px; left: 130px;"></div>
+						<div class="mouth" style="top: 130px; left: 90px;"></div>
+						<div class="hint">
+							<div class="hint__bottom">
+								<div class="file file_inner">
+									<input type="file">
+									<span>Retake/Select Another??</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="terms">
+					<label class="checkbox">
+						<input type="checkbox">
+						<span>I agree to <a href="#/terms">Terms and Use</a></span>
+					</label>
+				</div>
+				<a href="#/loading" class="btn">let me show man sing!</a>
+			</section>
+		</script>
+		<!-- loading -->
+		<script type="text/template" id="loading">
+			<!-- loading -->
+			<section class="loading">
+				<div class="topper">
+					<h1 class="h1">Almost Showtime!</h1>
+				</div>
+				<div class="loading__in">
+					<div class="loader loader_big is-visible"></div>
+				</div>
+				<div class="loading__text">
+					<p>Did you know you can share your show at the NYC 5th Avenue Ted Baker store?</p>
+					<a href="#/gift" class="link">link to gift page</a>
+				</div>
+			</section>
+		</script>
+		<!-- gift -->
+		<script type="text/template" id="gift">
+			<!-- gift -->
+			<section class="gift">
+				<div class="topper">
+					<h1 class="h1">Our Gift to You</h1>
+				</div>
+				<div class="slider js-slider">
+					<div class="slider__item">
+						<div class="video">
+							<div id="video_holder"></div>
+							<img src="img/video.jpg" alt="">
+							<div class="video__link">
+								<a href="#"><i class="icon-play-big"></i> play video</a>
+							</div>
+						</div>
+					</div>
+					<div class="slider__item">
+						<img src="img/video.jpg" alt="">
+					</div>
+					<div class="slider__item">
+						<img src="img/video.jpg" alt="">
+					</div>
+					<div class="slider__item">
+						<img src="img/video.jpg" alt="">
+					</div>
+				</div>
+				<div class="submit">
+					<a href=" #/send-gift" class="btn">play in store</a>
+				</div>
+				<div class="share">
+					<h2 class="h2">share</h2>
+					<ul class="share__list">
+						<li>
+							<a href="#"><i class="icon-fb"></i></a>
+						</li>
+						<li>
+							<a href="#"><i class="icon-tw"></i></a>
+						</li>
+						<li>
+							<a href="#"><i class="icon-email"></i></a>
+						</li>
+					</ul>
+				</div>
+				<div class="reselect">
+					<a href="#/" class="link">sing another song?</a>
+					<p>
+						<a href="#/send-gift" class="link">link to send gift page</a>
+					</p>
+				</div>
+			</section>
+		</script>
+		<!-- send gift -->
+		<script type="text/template" id="send-gift">
+			<!-- send gift -->
+			<section class="store">
+				<div class="topper">
+					<h1 class="h1">Share Your Gift<br> with the World!</h1>
+					<h3 class="h3">Your video can be part of the Ted Baker store windows at Fifth Avenue in New York! </h3>
+				</div>
+				<div class="store__in">
+					<div class="store__img">
+						<img src="img/store.jpg" alt="">
+					</div>
+					<div class="store__info">
+						<h2 class="h2">NYC FIFTH AVENUE</h2>
+						<p>
+							<a href="#">595 5th Avenue at 48th Street<br>New York City, NY 10017 </a>
+						</p>
+						<p>
+							<a class="tel" href="tel:212 317 1514">212 317 1514</a>
+						</p>
+					</div>
+				</div>
+				<div class="submit">
+					<a href="#/thanks" class="btn">play in store</a>
+				</div>
+			</section>
+		</script>
+		<!-- thanks -->
+		<script type="text/template" id="thanks">
+			<!-- thanks -->
+			<section class="thanks">
+				<div class="topper">
+					<div class="title">thank you <div class="face"><img src="img/notes.svg" width="30" alt=""></div></div>
+					<h3 class="h3">Your Showman will appear in our holiday window display SOON.</h3>
+				</div>
+				<div class="thanks__in">
+					<div class="time">11/23 (Mon) 15:30</div>
+					<div class="backtoshow">
+						<a href="#" class="btn">back to your show</a>
+					</div>
+					<div class="feedback">
+						<h3 class="h3">STAY in tune WiTH US!</h3>
+						<h3 class="h3">SIGN UP for Ted updates!</h3>
+						<form action="#">
+							<div class="feedback__form">
+								<input type="text" class="input" placeholder="enter e-mail address">
+								<button type="submit" class="btn">submit</button>
+							</div>
+						</form>
+					</div>
+					<a href="#/greeting" class="link">link to greetings page</a>
+				</div>
+			</section>
+		</script>
+		<!-- greeting -->
+		<script type="text/template" id="greeting">
+			<!-- greeting -->
+			<section class="gift">
+				<div class="topper">
+					<h1 class="h1">season’s greetings<br>From TED BAKER</h1>
+				</div>
+				<div class="video">
+					<img src="img/video.jpg" alt="">
+					<div class="video__link">
+						<a href="#"><i class="icon-play-big"></i> play video</a>
+					</div>
+				</div>
+				<div class="submit">
+					<a href="#" class="btn">CREATE YOUR OWN SHOW</a>
+				</div>
+			</section>
+		</script>
+		<!-- terms -->
+		<script type="text/template" id="terms">
+			<!-- terms -->
+			<section class="terms">
+				<div class="topper">
+					<h1 class="h1">TERMS OF USE</h1>
+				</div>
+				<div class="terms__text">
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				</div>
+			</section>
+		</script>
+
+		<!-- terms -->
+		<script type="text/template" id="send">
+			<!-- send -->
+			<section class="send">
+				<div class="topper">
+					<h1 class="h1">Share performance</h1>
+					<p>Let’s Share your performance with your friends!</p>
+					<div class="sendform">
+						<div class="inputrow">
+							<div class="inputrow__label">From</div>
+							<input type="text" class="inputrow__input" placeholder="Enter YOUR E-mail">
+						</div>
+						<div class="inputrow ">
+							<div class="inputrow__label">To</div>
+							<input type="text" class="is-error inputrow__input" placeholder="Enter recipient e-mail" value="asda">
+						</div>
+						<div class="inputrow ">
+							<div class="inputrow__label">To</div>
+							<input type="text" class="inputrow__input" placeholder="Enter recipient e-mail" >
+						</div>
+					</div>
+					<label class="checkbox">
+						<input type="checkbox">
+						<span>I agree to <a href="#/terms">Terms and Use</a></span>
+					</label>
+
+					<div class="submit submit_send">
+						<a href='#' class="btn">Send</a>
+					</div>
+				</div>
+				blabla
+			</section>
+		</script>
+		<!-- END out-->
+		<script src="js/lib/jquery.js"></script>
+		<script src="js/lib/slick.min.js"></script>
+		<script src="js/lib/underscore-min.js"></script>
+		<script src="js/lib/backbone-min.js"></script>
+		<script src="js/app.js"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+		<script type="text/javascript" src="js/vendor/jquery.panzoom.js"></script>
+		 <script type="text/javascript" src="js/jquery.exif.js"></script>
+		 <script type="text/javascript" src="js/load-image.all.min.js"></script>
+
+
+		<script type="text/javascript" src="js/vendor/crop.js"></script>
+	</body>
+	</html>

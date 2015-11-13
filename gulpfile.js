@@ -91,6 +91,10 @@ gulp.task('js', function () {
         .pipe(rigger())
         .pipe(gulp.dest('site/js/'))
         .pipe(reload({stream: true}));
+     gulp.src('src/js/vendor/*.js')
+        .pipe(rigger())
+        .pipe(gulp.dest('site/js/vendor/'))
+        .pipe(reload({stream: true}));
 });
 
 gulp.task('copy', function() {

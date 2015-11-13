@@ -9,6 +9,7 @@ var AppRouter = Backbone.Router.extend({
 		"send-gift": "send-gift",
 		"thanks": "thanks",
 		"greeting": "greeting",
+		"send": "send",
 		"terms": "terms"
 	},
 	start: function() {
@@ -22,6 +23,7 @@ var app_router = new AppRouter;
 app_router.on('route:steps', function (number) {
 	if (number == 2) {
 		chooseBg.render();
+		$('.header__back').show();
 	};
     if (number == 3) {   
 		choosePhoto.render();
@@ -59,6 +61,11 @@ app_router.on('route:greeting', function () {
 });
 app_router.on('route:terms', function () {
 	terms.initialize();
+
+	console.log( "You are at terms page" ); 
+});
+app_router.on('route:send', function () {
+	send.initialize();
 
 	console.log( "You are at terms page" ); 
 });

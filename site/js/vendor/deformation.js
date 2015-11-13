@@ -61,10 +61,24 @@ console.log("Warp redrawed")
 
  // crop_canvas.getContext('2d').drawImage(image_target, left/scaled, top/scaled, width/scaled, height/scaled, 0, 0, width, height);
  var dataURL= this.canvas.toDataURL("image/png");
- this.img.src=dataURL;
+  this.img.src=dataURL;
 
-//  $(this.img).bind("load",function() {
 
+// var parent=$('#imgR').parent();
+$('#imgR').remove();
+
+var img = $('<img width="256px" height="256px" id="imgR">');
+$(img).addClass("resize-image");
+img.attr('src', dataURL);
+$('.resize-container').append($(img));
+
+window.open(dataURL);
+
+
+ // $('#video_holder').append('<img  height="256" width="256" src="' + dataURL + '"></img>');
+
+ // $(this.img).bind("load",function() {
+// console.log("image loaded")
 
 //   $(this).css({
 //     width:width,

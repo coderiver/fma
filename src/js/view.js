@@ -206,14 +206,17 @@ Terms = Backbone.View.extend({
 
 terms = new Terms();
 
+// terms page
+Send = Backbone.View.extend({
+	el: '#container',
+	initialize: function() {
+		this.render();
+	},
+	render: function(){
+		var html = _.template( $('#send').html(), {} );
+		this.$el.html(html);
+		return this;
+	}
+});
 
-
-
-
-
-
-
-
-
-
-
+send = new Send();

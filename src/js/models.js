@@ -9,8 +9,3 @@ var Song = Backbone.Model.extend({
 var Album = Backbone.Collection.extend({
 	model: Song
 });
-
-
-
-
-	

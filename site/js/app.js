@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
 	// models
 	var Song = Backbone.Model.extend({
 		defaults: {
@@ -217,6 +218,21 @@ $(document).ready(function() {
 	});
 	
 	terms = new Terms();
+	
+	// terms page
+	Send = Backbone.View.extend({
+		el: '#container',
+		initialize: function() {
+			this.render();
+		},
+		render: function(){
+			var html = _.template( $('#send').html(), {} );
+			this.$el.html(html);
+			return this;
+		}
+	});
+	
+	send = new Send();
 	// router
 	
 	var AppRouter = Backbone.Router.extend({
@@ -228,6 +244,7 @@ $(document).ready(function() {
 			"send-gift": "send-gift",
 			"thanks": "thanks",
 			"greeting": "greeting",
+			"send": "send",
 			"terms": "terms"
 		},
 		start: function() {
@@ -241,6 +258,7 @@ $(document).ready(function() {
 	app_router.on('route:steps', function (number) {
 		if (number == 2) {
 			chooseBg.render();
+			$('.header__back').show();
 		};
 	    if (number == 3) {   
 			choosePhoto.render();
@@ -281,6 +299,11 @@ $(document).ready(function() {
 	
 		console.log( "You are at terms page" ); 
 	});
+	app_router.on('route:send', function () {
+		send.initialize();
+	
+		console.log( "You are at terms page" ); 
+	});
 	
 	Backbone.history.start();
 	// slider
@@ -293,9 +316,20 @@ $(document).ready(function() {
 		});
 	};
 	
+	
+	
+	
 	// player
 	$('.js-player').each(function() {
 		$(this)[0].preload="none";
+	});
+	
+	reload_function=function(){
+		alert('reloaded');
+	}
+	
+	$( "#gotoStep3" ).click(function() {
+	  alert( "Handler for .click() called." );
 	});
 	
 	$(document).on('click', '.player-btn', function() {
@@ -314,16 +348,16 @@ $(document).ready(function() {
 	
 			// start loading audio
 			player.addEventListener('loadstart', function() {
-			    
-			    $(this).next('.loader').addClass('is-visible');
-			    console.log('start loading song');
+	
+				$(this).next('.loader').addClass('is-visible');
+				console.log('start loading song');
 			});
 	
 			// finish loading audio
 			player.addEventListener('canplaythrough', function() {
 				
-			    $(this).next('loader').removeClass('is-visible');
-			    console.log('finished loading song');
+				$(this).next('loader').removeClass('is-visible');
+				console.log('finished loading song');
 			});
 	
 			// play audio

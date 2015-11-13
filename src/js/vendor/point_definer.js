@@ -18,12 +18,15 @@ ImgWarper.PointDefiner = function(canvas, image, imgData, coords,call_back) {
 
 
   this.generateOval();
+  // console.log(coords);
+  // this.generateCollibrationPoints();
   this.generateLeftEye(coords.leftEye);
   this.generateRightEye(coords.rightEye);
   this.generateNose(coords.Nose);
   this.generateMouth(coords.Mouth);
 
   this.redraw();
+
   this.call_back(this.canvas);
 
   console.log("warper inited");
@@ -41,16 +44,29 @@ ImgWarper.PointDefiner.prototype.redraw = function () {
 
   this.imgWarper.warp(this.oriPoints, this.dstPoints);
 
+ // this.redrawCanvas();
+   // this.imgWarper.drawToImg();
 
-  // this.imgWarper.drawToImg();
-
-  
-};
+   
+ };
 
 
-ImgWarper.PointDefiner.prototype.touchStart = function(e) {
+ ImgWarper.PointDefiner.prototype.touchStart = function(e) {
 
-};
+ };
+
+
+ ImgWarper.PointDefiner.prototype.generateCollibrationPoints = function() {
+   var points= [100, 100,500,500];
+   var d_points=[100, 100,500,500];
+   for(var i=0;i<points.length;i+=2){
+    var q = new ImgWarper.Point(points[i], points[i+1]);
+    this.oriPoints.push(q);
+    var d = new ImgWarper.Point(d_points[i], d_points[i+1]);
+
+    this.dstPoints.push(d);
+  }
+}
 
 
 
@@ -70,11 +86,11 @@ ImgWarper.PointDefiner.prototype.generateOval = function() {
 
 ImgWarper.PointDefiner.prototype.generateLeftEye = function(coord) {
  var points= [132, 196, 77, 169, 168, 154, 194, 191, 142, 241, 67, 221];
- var dis_p=coord;
- // var dis_p=[180, 240];
+ var new_p=coord;
+ var dis_p=[183, 239];
 
  for(var i=2;i<points.length;i+=2){
-  var q = new ImgWarper.Point(points[i], points[i+1]);
+  var q = new ImgWarper.Point(points[i]-(points[0]-new_p[0]), points[i+1]-(points[1]-new_p[1]));
   this.oriPoints.push(q);
   var d = new ImgWarper.Point(points[i]-(points[0]-dis_p[0]), points[i+1]-(points[1]-dis_p[1]));
   this.dstPoints.push(d);
@@ -85,25 +101,27 @@ ImgWarper.PointDefiner.prototype.generateLeftEye = function(coord) {
 
 ImgWarper.PointDefiner.prototype.generateRightEye = function(coord) {
  var points= [305, 182, 236, 193, 258, 156, 331, 144, 363, 191];
- var dis_p=coord;
- // var dis_p=[328, 239];
+ // var dis_p=coord;
+ var new_p=coord;
+ var dis_p=[330, 240];
 
  for(var i=2;i<points.length;i+=2){
-  var q = new ImgWarper.Point(points[i], points[i+1]);
-  this.oriPoints.push(q);
-  var d = new ImgWarper.Point(points[i]-(points[0]-dis_p[0]), points[i+1]-(points[1]-dis_p[1]));
-  this.dstPoints.push(d);
-}
+   var q = new ImgWarper.Point(points[i]-(points[0]-new_p[0]), points[i+1]-(points[1]-new_p[1]));
+   this.oriPoints.push(q);
+   var d = new ImgWarper.Point(points[i]-(points[0]-dis_p[0]), points[i+1]-(points[1]-dis_p[1]));
+   this.dstPoints.push(d);
+ }
 // this.redraw();
 
 }
 ImgWarper.PointDefiner.prototype.generateNose = function(coord) {
  var points= [218, 290, 149, 285, 224, 340, 290, 271];
- var dis_p=coord;
- // var dis_p=[260, 321];
+ // var dis_p=coord;
+ var new_p=coord;
+ var dis_p=[262, 320];
 
  for(var i=2;i<points.length;i+=2){
-  var q = new ImgWarper.Point(points[i], points[i+1]);
+  var q = new ImgWarper.Point(points[i]-(points[0]-new_p[0]), points[i+1]-(points[1]-new_p[1]));
   this.oriPoints.push(q);
   var d = new ImgWarper.Point(points[i]-(points[0]-dis_p[0]), points[i+1]-(points[1]-dis_p[1]));
   this.dstPoints.push(d);
@@ -114,15 +132,18 @@ ImgWarper.PointDefiner.prototype.generateNose = function(coord) {
 
 ImgWarper.PointDefiner.prototype.generateMouth = function(coord) {
  var points= [239, 380, 137, 366, 227, 342, 343, 337, 244, 416];
- var dis_p=coord;
- // var dis_p=[256, 388];
+ // var dis_p=coord;
+ var new_p=coord;
+ var dis_p=[258, 390];
 
  for(var i=2;i<points.length;i+=2){
-  var q = new ImgWarper.Point(points[i], points[i+1]);
+  var q = new ImgWarper.Point(points[i]-(points[0]-new_p[0]), points[i+1]-(points[1]-new_p[1]));
   this.oriPoints.push(q);
   var d = new ImgWarper.Point(points[i]-(points[0]-dis_p[0]), points[i+1]-(points[1]-dis_p[1]));
   this.dstPoints.push(d);
 }
+
+
 // this.redraw();
 
 }

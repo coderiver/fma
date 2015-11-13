@@ -36,6 +36,7 @@
 	<!-- header template -->
 	<script type="text/template" id="header_template">
 		<div class="header__in">
+			<div class="header__back"></div>
 			<a href="#" class="logo">
 				<img src="img/logo.svg" width="120" alt="">
 			</a>
@@ -129,7 +130,7 @@
 						</div>
 					</label>
 				</div>
-				<div class="submit">
+				<div class="submit" >
 					<a href="#/step/3" class="btn btn_wide">Now, Let’s Take a Picture</a>
 				</div>
 			</form>
@@ -170,7 +171,8 @@
 				<!--begin new code -->
 				<div class=" restrict">
 					<div class="crop-wrapper">
-
+						<div id="video_holder">
+						</div>
 						<div class="overlay">
 							<div class="cropped_image">
 							</div>
@@ -178,49 +180,49 @@
 							<div class="overlay-inner">
 							</div>
 							<div id="guide">
-								<img src="img/oval.png"/>
+								<img id="guide_img" src="img/crop/step1-face.png"/>
 							</div>  
 						</div>
 						<div id="guide_points">
 							<div id="guide_eye_l" class="drag_point ">
-								<img src="img/leftEye.png"/>
+								<img src="img/crop/step2-eye.png" width="50%" height="50%"/>
 							</div>
 							<div id="guide_eye_r" class="drag_point ">
-								<img src="img/rightEye.png"/>
+								<img  src="img/crop/step2-eye.png" width="50%" height="50%"/>
 							</div>
 							<div id="guide_nose" class="drag_point ">
-								<img src="img/nose.png"/>
+								<img  src="img/crop/step3-nose.png" width="50%" height="50%"/>
 							</div>
 							<div id="guide_mouth" class="drag_point ">
-								<img src="img/mouse.png"/>
+								<img  src="img/crop/step4-mouth.png" width="50%" height="50%"/>
 							</div>
 						</div>
 
-						<img id="imgR" class="resize-image" src=""  alt="image for resizing">
+						<img id="imgR"  class="resize-image" src="img/empty.png"  alt="image for resizing">
 					</div></div>
-				<!-- END RESTRICT -->
-			</div>
-			<!-- end photo-wrap -->
-			<div class="terms">
-				<label class="checkbox">
-					<input type="checkbox">
-					<span>I agree to <a href="#/terms">Terms and Use</a></span>
-				</label>
-			</div>
-			<div id="crop_buttons">
-				<label class="file">
-					<input type="file" class="js-loadfile">
-					<span class="btn">TAKE / SELECT A Photo</span>
-					
-				</label>
-				<button class="btn js-crop">Crop</button>
-			</div>
-			<button class="btn btn_next">Next</button>
-			<div id="usr_msg"></div>
-		
+					<!-- END RESTRICT -->
+				</div>
+				<!-- end photo-wrap -->
+				<div class="terms">
+					<label class="checkbox">
+						<input type="checkbox">
+						<span>I agree to <a href="#/terms">Terms and Use</a></span>
+					</label>
+				</div>
+				<div id="crop_buttons">
+					<label class="file">
+						<input type="file" class="js-loadfile">
+						<span class="btn">TAKE / SELECT A Photo</span>
+
+					</label>
+					<button class="btn js-crop">Crop</button>
+				</div>
+				<button class="btn btn_next">Next</button>
+				<div id="usr_msg"></div>
 
 
-			 
+
+
 			</section>
 		</script>
 		<!-- preview photo -->
@@ -282,6 +284,7 @@
 				<div class="slider js-slider">
 					<div class="slider__item">
 						<div class="video">
+							<div id="video_holder"></div>
 							<img src="img/video.jpg" alt="">
 							<div class="video__link">
 								<a href="#"><i class="icon-play-big"></i> play video</a>
@@ -299,7 +302,7 @@
 					</div>
 				</div>
 				<div class="submit">
-					<a href="#" class="btn">play in store</a>
+					<a href=" #/send-gift" class="btn">play in store</a>
 				</div>
 				<div class="share">
 					<h2 class="h2">share</h2>
@@ -417,6 +420,8 @@
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
 		<script type="text/javascript" src="js/vendor/jquery.panzoom.js"></script>
+		 <script type="text/javascript" src="js/jquery.exif.js"></script>
+		 <script type="text/javascript" src="js/load-image.all.min.js"></script>
 
 
 		<script type="text/javascript" src="js/vendor/crop.js"></script>

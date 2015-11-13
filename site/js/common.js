@@ -8,9 +8,20 @@ if ($('.js-slider').length) {
 	});
 };
 
+
+
+
 // player
 $('.js-player').each(function() {
 	$(this)[0].preload="none";
+});
+
+reload_function=function(){
+	alert('reloaded');
+}
+
+$( "#gotoStep3" ).click(function() {
+  alert( "Handler for .click() called." );
 });
 
 $(document).on('click', '.player-btn', function() {
@@ -29,16 +40,16 @@ $(document).on('click', '.player-btn', function() {
 
 		// start loading audio
 		player.addEventListener('loadstart', function() {
-		    
-		    $(this).next('.loader').addClass('is-visible');
-		    console.log('start loading song');
+
+			$(this).next('.loader').addClass('is-visible');
+			console.log('start loading song');
 		});
 
 		// finish loading audio
 		player.addEventListener('canplaythrough', function() {
 			
-		    $(this).next('loader').removeClass('is-visible');
-		    console.log('finished loading song');
+			$(this).next('loader').removeClass('is-visible');
+			console.log('finished loading song');
 		});
 
 		// play audio

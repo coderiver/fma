@@ -43,6 +43,8 @@ body
 	overflow-x: hidden
 	min-height: 100% 
 	background: $violet-dark
+	.is-desktop &
+		background: none 
 	 
 .header
 	position: absolute
@@ -56,6 +58,17 @@ body
 		padding: 13px 15px
 		max-width: 600px
 		margin: 0 auto
+		position: relative
+	.header__back
+		position: absolute
+		left: 0
+		top: 12px
+		width: 46px  
+		height: 26px 
+		background:  url(../img/back.png) no-repeat 0 0
+		background-size: contain  
+		cursor: pointer
+		display: none
 .logo
 	position: absolute
 	top: 13px
@@ -67,6 +80,9 @@ body
 	margin-bottom: 25px
 	+fcondt
 	line-height: 20px
+	.is-desktop &
+		text-transform: uppercase
+		letter-spacing: 2px 
 .h1
 	font-size: 20px	
 .h2
@@ -103,8 +119,12 @@ body
 		min-height: 100%
 		background: $violet-dark url(../img/bg.jpg) top center no-repeat 
 		background-size: 100% auto
+		.is-desktop &
+			background: none 
 	& > section
 		position: relative	
+body
+	background: #363357 url(../img/fma-bg.jpg) top center no-repeat 
 .steps
 	margin-bottom: 5px
 
@@ -156,6 +176,14 @@ body
 		height: 48px
 	&.is-visible
 		opacity: 1 
+.playlist
+	.is-desktop &
+		max-width: 512px 
+		margin: 0 auto
+.scene-wrap
+	.is-desktop &
+		max-width: 512px 
+		margin: 0 auto
 .song
 	display: block 
 	border-bottom: 1px solid #bbc6d8
@@ -231,6 +259,42 @@ body
 				color: #fff 		 	
 .submit
 	padding: 60px 0
+	width: 400px 
+	margin-left: auto 
+	margin-right: auto
+	&.submit_send
+		padding-top: 20px 
+	.btn
+		width: 100% 
+
+.send
+	max-width: 400px 
+	margin: 0 auto 
+.sendform
+	margin-top: 30px 
+.inputrow
+	border-bottom: 1px solid #bbc6d7 
+	margin-bottom: 32px 
+	position: relative
+	text-align: left
+	&__label
+		font-size: 12px 
+		text-transform: uppercase
+		color: #fff 
+		position: absolute
+		left: 10px 
+	&__input
+		font-size: 12px 
+		text-transform: uppercase
+		color: #66678d 
+		margin-left: 80px
+		width: 280px 
+		background: none 
+		border: none 
+		padding-bottom: 8px 
+		&.is-error
+			color: #fc0d1b 
+		
 .btn
 	display: inline-block
 	height: 40px
@@ -276,6 +340,9 @@ body
 	float: left
 	margin-left: 4%
 	margin-bottom: 10px
+	.is-desktop &
+		position: relative
+		left: -2% 
 	input
 		position: absolute
 		opacity: 0
@@ -310,11 +377,17 @@ body
 	position: relative
 	margin-bottom: 30px 
 	height: 230px 
-	
+	.is-desktop &
+		width: 512px 
+		height: 512px 
+		margin-left: auto 
+		margin-right: auto 
 	.photo__in
 		position: relative
 		width: 230px
 		margin: 0 auto
+		.is-desktop &
+			width: 512px 
 		img
 			display: block
 			width: 100%
@@ -334,6 +407,9 @@ body
 		font-size: 10px
 		text-align: left
 		line-height: 1.2
+		.is-desktop &
+			top: 36px 
+			right: 100px 
 		img
 			position: absolute
 			width: 46px 
@@ -346,6 +422,9 @@ body
 		font-size: 10px
 		text-align: right
 		line-height: 1.2
+		.is-desktop &
+			top: 173px 
+			left: 80px 
 		img
 			position: absolute
 			top: 0
@@ -358,6 +437,9 @@ body
 		font-size: 10px
 		text-align: left
 		line-height: 1.2
+		.is-desktop &
+			top: 300px 
+			right: 122px 
 		img
 			position: absolute
 			top: 0
@@ -451,6 +533,9 @@ body
 		margin: 0 auto 30px
 		background: url(../img/loading.png) 0 20px no-repeat
 		background-size: 100% auto 
+		.is-desktop &
+			width: 400px 
+			height: 273px 
 		.loader
 			position: absolute
 			top: 50px
@@ -466,6 +551,8 @@ body
 .gift
 	width: 230px
 	margin: 0 auto
+	.is-desktop &
+		width: 400px 
 	.submit
 		padding: 0 0 40px 
 .slider
@@ -571,6 +658,9 @@ body
 		color: $gray
 		text-transform: uppercase 
 .terms
+	.is-desktop &
+		max-width: 400px 
+		margin: 0 auto 
 	.terms__text
 		text-transform: none
 		text-align: left
