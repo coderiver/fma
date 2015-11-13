@@ -36,7 +36,7 @@ body { font-family: "NeutrafaceDisplayBold"; -webkit-font-smoothing: antialiased
 
 .header { position: absolute; top: 0; height: 50px; left: 0; right: 0; background: #fff; z-index: 2; }
 .header .header__in { padding: 13px 15px; max-width: 600px; margin: 0 auto; position: relative; }
-.header .header__back { position: absolute; left: 0; top: 12px; width: 46px; height: 26px; background: url(../img/back.png) no-repeat 0 0; background-size: contain; cursor: pointer; display: none; }
+.header .header__back { position: absolute; left: 14px; top: 12px; width: 46px; height: 26px; background: url(../img/back.png) no-repeat 0 0; background-size: contain; cursor: pointer; display: none; }
 
 .logo { position: absolute; top: 13px; left: 50%; -webkit-transform: translateX(-50%); -ms-transform: translateX(-50%); transform: translateX(-50%); }
 
