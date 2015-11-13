@@ -45,6 +45,9 @@ body
 	background: $violet-dark
 	.is-desktop &
 		background: none 
+	+rm(600)
+		background: none 
+
 	 
 .header
 	position: absolute
@@ -83,6 +86,10 @@ body
 	.is-desktop &
 		text-transform: uppercase
 		letter-spacing: 2px 
+	+rm(600)
+		text-transform: uppercase
+		letter-spacing: 2px 
+
 .h1
 	font-size: 20px	
 .h2
@@ -120,6 +127,8 @@ body
 		background: $violet-dark url(../img/bg.jpg) top center no-repeat 
 		background-size: 100% auto
 		.is-desktop &
+			background: none 
+		+rm(600)
 			background: none 
 	& > section
 		position: relative	
@@ -180,8 +189,14 @@ body
 	.is-desktop &
 		max-width: 512px 
 		margin: 0 auto
+	+rm(600)
+		max-width: 512px 
+		margin: 0 auto
 .scene-wrap
 	.is-desktop &
+		max-width: 512px 
+		margin: 0 auto
+	+rm(600)
 		max-width: 512px 
 		margin: 0 auto
 .song
@@ -343,6 +358,9 @@ body
 	.is-desktop &
 		position: relative
 		left: -2% 
+	+rm(600)
+		position: relative
+		left: -2% 
 	input
 		position: absolute
 		opacity: 0
@@ -382,11 +400,19 @@ body
 		height: 512px 
 		margin-left: auto 
 		margin-right: auto 
+	+rm(600)
+		width: 512px 
+		height: 512px 
+		margin-left: auto 
+		margin-right: auto 
+
 	.photo__in
 		position: relative
 		width: 230px
 		margin: 0 auto
 		.is-desktop &
+			width: 512px 
+		+rm(600)
 			width: 512px 
 		img
 			display: block
@@ -410,6 +436,9 @@ body
 		.is-desktop &
 			top: 36px 
 			right: 100px 
+		+rm(600)
+			top: 36px 
+			right: 100px 
 		img
 			position: absolute
 			width: 46px 
@@ -425,6 +454,9 @@ body
 		.is-desktop &
 			top: 173px 
 			left: 80px 
+		+rm(600)
+			top: 173px 
+			left: 80px 
 		img
 			position: absolute
 			top: 0
@@ -438,6 +470,9 @@ body
 		text-align: left
 		line-height: 1.2
 		.is-desktop &
+			top: 300px 
+			right: 122px 
+		+rm(600)
 			top: 300px 
 			right: 122px 
 		img
@@ -536,6 +571,9 @@ body
 		.is-desktop &
 			width: 400px 
 			height: 273px 
+		+rm(600)
+			width: 400px 
+			height: 273px 
 		.loader
 			position: absolute
 			top: 50px
@@ -553,6 +591,8 @@ body
 	margin: 0 auto
 	.is-desktop &
 		width: 400px 
+	+rm(600)
+		width: 400px
 	.submit
 		padding: 0 0 40px 
 .slider
@@ -659,6 +699,9 @@ body
 		text-transform: uppercase 
 .terms
 	.is-desktop &
+		max-width: 400px 
+		margin: 0 auto 
+	+rm(600)
 		max-width: 400px 
 		margin: 0 auto 
 	.terms__text

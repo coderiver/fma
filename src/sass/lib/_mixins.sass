@@ -9,6 +9,9 @@
 	@media only screen and (max-height: $height + "px")
 		@content
 
+=rm($width)
+	@media only screen and (min-width: $width+ "px")
+		@content
 =s($icon)
 	+sprite($icon)
 =fs($sizeValue: 16)
