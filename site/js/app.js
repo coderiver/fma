@@ -371,4 +371,8 @@ $(document).ready(function() {
 			console.log('pause');
 		}
 	});
+
+	$('.header__back').on('click',function(event) {
+		window.history.back();
+	});
 });
